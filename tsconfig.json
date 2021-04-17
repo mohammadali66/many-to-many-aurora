@@ -8,6 +8,12 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "paths": {
+      "many-to-many-aurora": [
+        "dist/many-to-many-aurora/many-to-many-aurora",
+        "dist/many-to-many-aurora"
+      ]
+    },
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
