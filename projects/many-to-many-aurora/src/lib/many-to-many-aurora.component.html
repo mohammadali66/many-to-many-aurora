@@ -1,0 +1,88 @@
+<div class="row" style="margin: 10px 0 10px 0;">
+  <div class="col-md-12">
+    <div class="form-row">
+      <!-- ---------- choice list ----------- -->
+      <div class="form-group col-md-5">
+
+        <span class="badge badge-secondary header-tabel" style="display: block;">{{ title_choiceList }}</span>
+
+        <!-- ---------- search input ----------- -->
+        <input
+          type="search"
+          [formControl]="searchChoiceFC"
+          placeholder="search"
+          class="form-control form-control-sm"
+        >
+
+        <select multiple [size]="displayedItemSize" class="form-control select-st" name="choiceListSelect" ngModel #choiceListSelect="ngModel" (ngModelChange)="onChangeChoiceListSelect($event)">
+          <option *ngFor="let item of choiceList2" [value]="item">{{ item.label }}</option>
+        </select>
+      </div>
+
+      <!-- ---------- buttons (just show in large desktop) ----------- -->
+      <div class="form-group col-md-1 d-none d-md-block">
+
+        <div class="d-flex align-items-center flex-column" style="margin-top:30px;">
+          <button type="button" name="allChoiceBtn" class="btn arrowBtn" (click)="onAllChoiceList()" [disabled]="!isActive_allChoiceBtn">
+            <i class="fa fa-angle-double-right"></i>
+          </button>
+
+          <button type="button" name="choiceBtn" class="btn arrowBtn" (click)="onChoiceList(choiceListSelect)" [disabled]="!isActive_choiceBtn">
+            <i class="fa fa-angle-right"></i>
+          </button>
+
+          <button type="button" name="selectedBtn" class="btn arrowBtn" (click)="onSelectedList(selectedListSelect)" [disabled]="!isActive_selectedBtn">
+            <i class="fa fa-angle-left"></i>
+          </button>
+
+          <button type="button" name="allSelectedBtn" class="btn arrowBtn" (click)="onAllSelectedList()" [disabled]="!isActive_allSelectedBtn">
+            <i class="fa fa-angle-double-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ---------- buttons (just show in mobile) ----------- -->
+      <div class="d-lg-none">
+        <div class="centered-butt">
+
+            <div class="d-flex align-items-center" style="margin-left:30px;">
+              <button type="button" name="allChoiceBtn" class="btn arrowBtn" (click)="onAllChoiceList()" [disabled]="!isActive_allChoiceBtn">
+                <i class="fa fa-angle-double-down"></i>
+              </button>
+
+              <button type="button" name="choiceBtn" class="btn arrowBtn" (click)="onChoiceList(choiceListSelect)" [disabled]="!isActive_choiceBtn">
+                <i class="fa fa-angle-down"></i>
+              </button>
+
+              <button type="button" name="selectedBtn" class="btn arrowBtn" (click)="onSelectedList(selectedListSelect)" [disabled]="!isActive_selectedBtn">
+                <i class="fa fa-angle-up"></i>
+              </button>
+
+              <button type="button" name="allSelectedBtn" class="btn arrowBtn" (click)="onAllSelectedList()" [disabled]="!isActive_allSelectedBtn">
+                <i class="fa fa-angle-double-up"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ---------- selected list ----------- -->
+        <div class="form-group col-md-5">
+          <span class="badge badge-secondary header-tabel" style="display: block;">{{ title_selectedList }}</span>
+
+        <!-- ---------- search input ----------- -->
+        <input
+          type="search"
+          [formControl]="searchSelectedFC"
+          placeholder="search"
+          class="form-control form-control-sm"
+          >
+          <select multiple [size]="displayedItemSize" [ngClass]="displayCssStyleSelectedBox()" name="selectedListSelect" ngModel #selectedListSelect="ngModel" (ngModelChange)="onChangeSelectedListSelect($event)">
+            <option *ngFor="let item of selectedList2" [value]="item">{{ item.label }}</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+  </div>
